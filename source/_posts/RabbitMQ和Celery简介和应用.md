@@ -2,7 +2,6 @@ title: RabbitMQ和Celery简介和应用
 date: 2016-03-25 03:42:23
 tags:
 ---
-
 ## 简介
 
 在我们的OJ中，大量的异步操作都使用消息队列来（Message Queue 简称 MQ）传递信息，我们主要使用celery 执行异步任务，比如代理题目提交等功能，也有的地方直接使用 RabbitMQ 进行通信，比如我们的[分布式判题节点](https://github.com/NJUST-FishTeam/OnlineJudgeSite_M6)
@@ -10,8 +9,9 @@ tags:
 由于使用了消息对了，我们可以很轻松的增加评测机的数目，只需要在新的虚拟机中启动判题节点，让判题节点连接消息队列自己接受任务即可。同时，消息队列具有持久化功能，如果OJ中的某个组件出现故障，其他部件发出的消息并不会丢失，而是等待故障部件恢复之后再消费信息。
 
 RabbitMQ 是实现了 **AMQP** ([Advanced_Message_Queuing_Protocol](https://en.wikipedia.org/wiki/Advanced_Message_Queuing_Protocol))的消息队列，使用Erlang编写。
-
 Celery 是一个 Python 分布式的任务队列，主要用于完成异步任务，可以选择多种后端(Broker),例如RabbitMQ， Redis， 甚至数据库都可以。虽然主要用于完成异步任务，但是也可以用于完成定时任务和直接从RabbitMQ中接收消息。
+
+<!-- more -->
 
 ## RabbitMQ 可视化管理
 RabbitMQ 提供一个HTTP的可视化管理插件，可以通过浏览器进行方便的监视和管理操作，使用方法
